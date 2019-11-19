@@ -1,0 +1,11 @@
+{% load static %}
+<link rel='stylesheet' href='../../static/styles.css'>
+{% for item in data %}
+<div class='content'>
+    <div class='areas'>
+        <p>@{{item.user}}</p>
+        <p>{{item.message}}</p>
+        <a href=''><button>{{item.like}}</button></a>
+        <p>{{item.post_time}}</p>
+    </div>
+</div>
