@@ -18,7 +18,9 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from twitterclone.authentication.urls import urlpatterns as auth_urls
-from twitterclone.notifications.urls import urlpatterns as notif_urls
+from twitterclone.notification.urls import urlpatterns as notif_urls
+from twitterclone.tweet.urls import urlpatterns as tweet_urls
+from twitterclone.twitteruser.urls import urlpatterns as user_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +28,8 @@ urlpatterns = [
 
 urlpatterns += auth_urls
 urlpatterns += notif_urls
+urlpatterns += tweet_urls
+urlpatterns += user_urls
 
 
 if settings.DEBUG:

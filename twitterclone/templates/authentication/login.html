@@ -1,14 +1,19 @@
 {% load static %}
 <link rel='stylesheet' href='../static/styles.css'>
-<a href='/'><button class='buttonstyle'>Home</button></a>
 <div class='content'>
     <br>
+    <h2>Welcome to Kwitter!</h2>
     <br>
     <div class='areas'>
+        <h4>Sign In:</h4>
         <form action='' method='post'>
             {% csrf_token %}
             {{form.as_p}}
             <input type='submit' value='Submit'>
         </form>
+    </div>
+    <div>
+        <h5>Don't have an account?</h5>
+        <a href='/createuser/' class='buttonstyle'><button>Sign Up!</button></a>
     </div>
 </div>

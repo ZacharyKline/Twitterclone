@@ -1,0 +1,38 @@
+{% load static %}
+<link rel='stylesheet' href='../../static/styles.css'>
+<div class='navbar'>
+    <div>
+        <a href='/' class='buttonstyle'><button>Home</button></a>
+        <a href='/addtweet/' class='buttonstyle'><button>Tweet!</button></a>
+
+        <a href='/notifications/{{user.twitteruser.id}}' class='buttonstyle'><button>Notifications:
+                {{notif}}
+            </button></a>
+        <a href='/profile/{{user.twitteruser.id}}' class='buttonstyle'><button>My Profile</button></a>
+        <a href='/logout/' class='buttonstyle'><button>Logout</button></a>
+    </div>
+</div>
+<div>
+    <h4>Welcome Back!</h4>
+    <h4><a href='/profile/{{user.twitteruser.id}}'>@{{user}}</a></h4>
+</div>
+<div class='content'>
+    <div class='userspot'>
+        <div>Tweets: {{user.twitteruser.tweetcount}}</div>
+        <div>Following: {{user.twitteruser.follow.count}}</div>
+    </div>
+    <div class='tweetspot'>
+        <h4>Tweet feed:</h4>
+        {% for item in tweets %}
+        <div class='areas'>
+            <div>
+                <ul>
+                    <a href='/profile/{{item.user.id}}'>@{{item.user}}</a>
+                    {{item.message}}
+                    <a href='/view_tweet/{{item.id}}'>{{item.post_time}}</a>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

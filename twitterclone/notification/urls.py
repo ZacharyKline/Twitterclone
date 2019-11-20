@@ -1,11 +1,11 @@
 from django.urls import path
-from twitterclone import views
+from twitterclone.notification import views
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('notifications/', views.NotificationView.as_view(),
-         name='notificiations_view'),
+    path('notifications/<int:id>/', views.notificationpage,
+         name='notify_view'),
 ]
 
 if settings.DEBUG:
