@@ -1,6 +1,8 @@
 {% load static %}
 <link rel='stylesheet' href='../static/styles.css'>
 <a href='/'><button class='buttonstyle'>Home</button></a>
+
+<a href='/profile/{{user.twitteruser.id}}'><button class='buttonstyle'>My Profile</button></a>
 <div class='content'>
     <br>
     <br>
@@ -8,7 +10,7 @@
         <form action='' method='post'>
             {% csrf_token %}
             {{form.as_p}}
-            <input type='submit' value='Submit'>
+            <input type='submit' value='Submit' class='logoutstyle'>
         </form>
     </div>
 </div>

@@ -1,36 +1,34 @@
 {% load static %}
 <link rel='stylesheet' href='../../static/styles.css'>
-<div class='navbar'>
-    <div>
-        <a href='/' class='buttonstyle'><button>Home</button></a>
-        <a href='/addtweet/' class='buttonstyle'><button>Tweet!</button></a>
 
-        <a href='/notifications/{{user.twitteruser.id}}' class='buttonstyle'><button>Notifications:
-                {{notif}}
-            </button></a>
-        <a href='/profile/{{user.twitteruser.id}}' class='buttonstyle'><button>My Profile</button></a>
-        <a href='/logout/' class='buttonstyle'><button>Logout</button></a>
+<a href='/'><button class='buttonstyle'>Home</button></a>
+<a href='/addtweet/'><button class='buttonstyle'>Tweet!</button></a>
+<a href='/notifications/{{user.twitteruser.id}}'><button class='buttonstyle'>Notifications:
+        {{notif}}
+    </button></a>
+<a href='/profile/{{user.twitteruser.id}}'><button class='buttonstyle'>My Profile</button></a>
+
+<div id='content'>
+    <div class='userbox'>
+        <div class='userspot'>
+            <h4>Welcome Back!</h4>
+            <h2><a href='/profile/{{user.twitteruser.id}}'>@{{user}}</a></h2>
+            <div>Tweets: {{user.twitteruser.tweetcount}}</div>
+            <div>Following: {{user.twitteruser.follow.count}}</div>
+            <br>
+        </div>
+        <a href='/logout/'><button class='logstyle'>Logout</button></a>
     </div>
-</div>
-<div>
-    <h4>Welcome Back!</h4>
-    <h4><a href='/profile/{{user.twitteruser.id}}'>@{{user}}</a></h4>
-</div>
-<div class='content'>
-    <div class='userspot'>
-        <div>Tweets: {{user.twitteruser.tweetcount}}</div>
-        <div>Following: {{user.twitteruser.follow.count}}</div>
-    </div>
-    <div class='tweetspot'>
+    <div id='contenthome'>
         <h4>Tweet feed:</h4>
         {% for item in tweets %}
-        <div class='areas'>
+        <div class='tweetareas'>
             <div>
-                <ul>
-                    <a href='/profile/{{item.user.id}}'>@{{item.user}}</a>
-                    {{item.message}}
-                    <a href='/view_tweet/{{item.id}}'>{{item.post_time}}</a>
-                </ul>
+                <div><a href='/profile/{{item.user.id}}'>@{{item.user}}</a></div>
+                <br>
+                <div>{{item.message}}</div>
+                <br>
+                <div class='timespot'><a href='/view_tweet/{{item.id}}'>{{item.post_time}}</a></div>
             </div>
         </div>
         {% endfor %}

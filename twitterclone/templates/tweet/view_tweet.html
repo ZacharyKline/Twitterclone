@@ -1,13 +1,14 @@
 {% load static %}
 <link rel='stylesheet' href='../../static/styles.css'>
 {% for item in data %}
-<div class='content'>
-    <a href='/' class='buttonstyle'><button>Home</button></a>
-
-    <div class='areas'>
-        <p>@{{item.user}}</p>
-        <p>{{item.message}}</p>
-        <p>{{item.post_time}}</p>
+<a href='/'><button class='buttonstyle'>Home</button></a>
+<div id='contenttweet'>
+    <div class='tweetareasprofile'>
+        <div><a href='/profile/{{item.user.id}}'>@{{item.user}}</a></div>
+        <br>
+        <div>{{item.message}}</div>
+        <br>
+        <div class='timespot'><a href='/view_tweet/{{item.id}}'>{{item.post_time}}</a></div>
     </div>
 </div>
 {% endfor %}
