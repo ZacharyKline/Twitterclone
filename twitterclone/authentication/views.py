@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout, authenticate
 from twitterclone.authentication.forms import LoginForm, UserAdd
 from twitterclone.twitteruser.models import TwitterUser
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def loginview(request):
@@ -24,6 +25,7 @@ def loginview(request):
     return render(request, html, {'form': form})
 
 
+@login_required
 def logoutview(request):
     logout(request)
     return HttpResponseRedirect(reverse('login_view'))
