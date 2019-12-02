@@ -18,7 +18,7 @@ def viewmainpage(request):
     tweets = sorted(tweets, key=lambda tweet: tweet.post_time, reverse=True)
     return render(request, html, {
         'tweets': tweets, 'notif': notif})
-
+ 
 
 @login_required
 def maketweet(request):

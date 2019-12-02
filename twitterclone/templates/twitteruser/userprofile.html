@@ -9,6 +9,8 @@
             <h2>{{twitteruser.username}}</h2>
             <h3><a href='/profile/{{twitteruser.id}}'>@{{twitteruser.username}}</a></h3>
             <p>Bio: {{twitteruser.bio}}</p>
+            <div>Tweets: {{user.twitteruser.tweetcount}}</div>
+            <div>Following: {{user.twitteruser.follow.count}}</div>
         </div>
         <div>
             <a href='/follow/{{twitteruser.id}}'><button class='logstyle'>Follow?</button></a>
