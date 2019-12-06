@@ -1,14 +1,16 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from twitterclone.twitteruser.models import TwitterUser
 from twitterclone.tweet.models import Tweet
+from django.views import View
 
 
-def viewprofile(request, id):
-    html = 'twitteruser/userprofile.html'
-    twitteruser = TwitterUser.objects.filter(id=id).first()
-    tweets = Tweet.objects.filter(user=twitteruser).order_by('-post_time')
-    return render(request, html, {
-        'tweets': tweets, 'twitteruser': twitteruser})
+class ViewProfile(View):
+    def get(self, request, id):
+        html = 'twitteruser/userprofile.html'
+        twitteruser = TwitterUser.objects.filter(id=id).first()
+        tweets = Tweet.objects.filter(user=twitteruser).order_by('-post_time')
+        return render(request, html, {
+            'tweets': tweets, 'twitteruser': twitteruser})
 
 
 def followuser(request, id):

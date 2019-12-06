@@ -4,6 +4,7 @@ from twitterclone.authentication.forms import LoginForm, UserAdd
 from twitterclone.twitteruser.models import TwitterUser
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView
 
 
 def loginview(request):
@@ -31,9 +32,14 @@ def logoutview(request):
     return HttpResponseRedirect(reverse('login_view'))
 
 
-def createuser(request):
+class CreateUser(CreateView):
     html = 'authentication/signup.html'
-    if request.method == 'POST':
+
+    def get(self, request):
+        form = UserAdd()
+        return render(request, self.html, {'form': form})
+
+    def post(self, request):
         form = UserAdd(request.POST)
         if form.is_valid():
             data = form.cleaned_data
@@ -49,5 +55,5 @@ def createuser(request):
             )
             new_user.follow.add(new_user)
             return HttpResponseRedirect(reverse('homepage'))
-    form = UserAdd()
-    return render(request, html, {'form': form})
+        form = UserAdd()
+        return render(request, self.html, {'form': form})

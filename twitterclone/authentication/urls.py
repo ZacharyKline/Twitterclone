@@ -7,7 +7,7 @@ from django.conf import settings
 urlpatterns = [
     path('login/', views.loginview, name='login_view'),
     path('logout/', views.logoutview, name='logout_view'),
-    path('createuser/', views.createuser, name='create_user_view')
+    path('createuser/', views.CreateUser.as_view(), name='create_user_view')
 ]
 
 if settings.DEBUG:

@@ -5,9 +5,11 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', views.viewmainpage, name='homepage'),
+    path('', views.ViewMainPage.as_view(), name='homepage'),
     path('addtweet/', views.maketweet, name='make_tweet_view'),
-    path('view_tweet/<int:id>/', views.viewtweet, name='view_tweet_view')
+    path('view_tweet/<int:id>/',
+         views.ViewTweet.as_view(),
+         name='view_tweet_view')
 ]
 
 if settings.DEBUG:
