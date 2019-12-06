@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('notifications/<int:id>/', views.notificationpage,
+    path('notifications/<int:id>/', views.NotificationPage.as_view(),
          name='notify_view'),
 ]
 
